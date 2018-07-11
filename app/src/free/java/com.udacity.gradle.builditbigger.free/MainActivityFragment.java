@@ -72,7 +72,7 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        //Kick off the fetch
+
         requestNewInterstitial();
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
@@ -112,7 +112,6 @@ public class MainActivityFragment extends Fragment {
     private void requestNewInterstitial() {
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                //.addTestDevice("EA27D37DF5448BF42AA5F7A6D4F11A9B")
                 .build();
 
         mPublisherInterstitialAd.loadAd(adRequest);
