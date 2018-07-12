@@ -1,41 +1,33 @@
 package com.example.android.builditbigger;
 
-import android.app.Service;
-import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
+import android.support.test.rule.ActivityTestRule;
 
-import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
-import com.udacity.gradle.builditbigger.MainActivityFragment;
+import com.udacity.gradle.builditbigger.MainActivity;
+import com.udacity.gradle.builditbigger.R;
 
-
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.not;
 
-import static org.junit.Assert.assertNotNull;
+/* Capturing an AsyncTask response using the latch/countdown pattern:
+ * http://stackoverflow.com/questions/2321829/android-asynctask-testing-with-android-test-framework
+ */
+public class AsyncTaskTest  {
 
-@RunWith(AndroidJUnit4.class)
- public class AsyncTaskTest{
+    @Rule
+    public ActivityTestRule<MainActivity> activityTestRule
+            = new ActivityTestRule<>(MainActivity.class, false, true);
 
-
-    private static final String LOG_TAG = "NonEmptyStringTest";
-
-    @SuppressWarnings("unchecked")
-    public void test() {
-
-        // Testing that Async task successfully retrieves a non-empty string
-        // You can test this from androidTest -> Run 'All Tests'
-        Log.v("NonEmptyStringTest", "Running NonEmptyStringTest test");
-        String result = null;
-        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
-        endpointsAsyncTask.execute();
-        try {
-            result = endpointsAsyncTask.get();
-            Log.d(LOG_TAG, "Retrieved a non-empty string successfully: " + result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertNotNull(result);
+    @Test
+    public void testAsyncTask() {
+        onView(withId(R.id.initiateJoke)).perform(click());
+        onView(withId(R.id.joke_text)).check(matches(not(withText(""))));
     }
 }
