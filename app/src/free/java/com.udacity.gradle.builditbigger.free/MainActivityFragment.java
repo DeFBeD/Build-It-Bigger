@@ -1,8 +1,10 @@
 package com.udacity.gradle.builditbigger;
 
+utimport android.content.Context;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +25,8 @@ import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+
+    public static final String KEY_JOKE = "jokeChosen";
 
     private ProgressBar progressBar;
     public String loadedJoke;
@@ -48,10 +52,12 @@ public class MainActivityFragment extends Fragment {
                 super.onAdClosed();
                 //process the joke Request
                 progressBar.setVisibility(View.VISIBLE);
+                getAGoodJoke();
 
                 //pre-fetch the next ad
                 requestNewInterstitial();
-            }
+
+                }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
@@ -111,7 +117,6 @@ public class MainActivityFragment extends Fragment {
     private void requestNewInterstitial() {
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-
                 .build();
 
         mPublisherInterstitialAd.loadAd(adRequest);
@@ -120,15 +125,13 @@ public class MainActivityFragment extends Fragment {
 
     public void launchDisplayJokeActivity() {
 
-        if (!testFlag){
-
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJoke.class);
-            intent.putExtra(context.getString(R.string.chosenJoke), loadedJoke);
+            intent.putExtra(KEY_JOKE, loadedJoke);
+            assert context != null;
             context.startActivity(intent);
             progressBar.setVisibility(View.GONE);
 
-        }
 
 
     }

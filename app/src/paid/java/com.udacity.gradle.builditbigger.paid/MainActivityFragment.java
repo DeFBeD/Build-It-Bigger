@@ -19,10 +19,12 @@ import com.example.android.jokedisplay.DisplayJoke;
  */
 public class MainActivityFragment extends Fragment {
 
-    private ProgressBar progressBar = null;
-    public String loadedJoke = null;
+    public static final String KEY_JOKE = "jokeChosen";
+
+    private ProgressBar progressBar;
+    public String loadedJoke ;
     private Button mButton;
-    public boolean isThisATest = false;
+
 
     public MainActivityFragment() {
     }
@@ -56,13 +58,12 @@ public class MainActivityFragment extends Fragment {
 
     public void launchDisplayJokeActivity() {
 
-        if (!isThisATest){
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJoke.class);
-            intent.putExtra(context.getString(R.string.chosenJoke), loadedJoke);
+            intent.putExtra(KEY_JOKE, loadedJoke);
             context.startActivity(intent);
             progressBar.setVisibility(View.GONE);
-            }
+
 
     }
 }

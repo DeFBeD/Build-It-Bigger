@@ -8,12 +8,12 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
-import com.udacity.gradle.builditbigger.MainActivityFragment;
+
 
 import java.io.IOException;
 
 
-public class EndpointsAsyncTask extends AsyncTask<MainActivityFragment, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<com.udacity.gradle.builditbigger.MainActivityFragment, Void, String> {
     private static MyApi myApiService = null;
     private com.udacity.gradle.builditbigger.MainActivityFragment mainFragment;
 
