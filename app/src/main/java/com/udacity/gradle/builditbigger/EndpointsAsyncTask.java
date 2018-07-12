@@ -8,16 +8,17 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
+import com.udacity.gradle.builditbigger.MainActivityFragment;
 
 import java.io.IOException;
 
 
-class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<MainActivityFragment, Void, String> {
     private static MyApi myApiService = null;
-    private MainActivityFragment mainFragment;
+    private com.udacity.gradle.builditbigger.MainActivityFragment mainFragment;
 
     @Override
-    protected String doInBackground(MainActivityFragment... params) {
+    protected String doInBackground(com.udacity.gradle.builditbigger.MainActivityFragment... params) {
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)

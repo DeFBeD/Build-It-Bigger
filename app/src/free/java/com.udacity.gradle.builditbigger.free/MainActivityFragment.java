@@ -24,10 +24,10 @@ import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
  */
 public class MainActivityFragment extends Fragment {
 
-    private ProgressBar progressBar = null;
-    public String loadedJoke = null;
+    private ProgressBar progressBar;
+    public String loadedJoke;
     private Button mButton;
-    public boolean isThisATest = false;
+    public boolean testFlag = false;
     PublisherInterstitialAd mPublisherInterstitialAd;
     String LOG_TAG = "FREE_FLAVOR";
 
@@ -48,7 +48,6 @@ public class MainActivityFragment extends Fragment {
                 super.onAdClosed();
                 //process the joke Request
                 progressBar.setVisibility(View.VISIBLE);
-                getAGoodJoke();
 
                 //pre-fetch the next ad
                 requestNewInterstitial();
@@ -72,7 +71,7 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-
+        //Kick off the fetch
         requestNewInterstitial();
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
@@ -98,7 +97,7 @@ public class MainActivityFragment extends Fragment {
         progressBar.setVisibility(View.GONE);
 
 
-       // Create an ad request. Check logcat output for the hashed device ID to
+        // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
         AdRequest adRequest = new AdRequest.Builder()
@@ -112,6 +111,7 @@ public class MainActivityFragment extends Fragment {
     private void requestNewInterstitial() {
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+
                 .build();
 
         mPublisherInterstitialAd.loadAd(adRequest);
@@ -120,13 +120,16 @@ public class MainActivityFragment extends Fragment {
 
     public void launchDisplayJokeActivity() {
 
-        if (!isThisATest) {
+        if (!testFlag){
+
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJoke.class);
             intent.putExtra(context.getString(R.string.chosenJoke), loadedJoke);
             context.startActivity(intent);
             progressBar.setVisibility(View.GONE);
+
         }
+
 
     }
 
