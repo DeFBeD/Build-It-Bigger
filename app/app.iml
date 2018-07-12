@@ -124,7 +124,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidtest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/endpointsClientLibs" />
@@ -204,6 +204,10 @@
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:17.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
+    <orderEntry type="module" module-name="jokedisplay" />
+    <orderEntry type="module" module-name="jokeProvider" />
+    <orderEntry type="module" module-name="jokedisplay" />
+    <orderEntry type="module" module-name="jokeProvider" />
     <orderEntry type="module" module-name="jokedisplay" />
     <orderEntry type="module" module-name="jokeProvider" />
   </component>

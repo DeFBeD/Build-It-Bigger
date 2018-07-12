@@ -134,6 +134,6 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void getAGoodJoke() {
-        new EndpointAsyncTask().execute(this);
+        new EndpointsAsyncTask().execute(this);
     }
 }
