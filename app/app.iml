@@ -206,9 +206,5 @@
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
     <orderEntry type="module" module-name="jokedisplay" />
     <orderEntry type="module" module-name="jokeProvider" />
-    <orderEntry type="module" module-name="jokedisplay" />
-    <orderEntry type="module" module-name="jokeProvider" />
-    <orderEntry type="module" module-name="jokedisplay" />
-    <orderEntry type="module" module-name="jokeProvider" />
   </component>
 </module>
